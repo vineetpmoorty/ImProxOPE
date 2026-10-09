@@ -3,7 +3,6 @@ Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadO
 Changes from the original: import paths; removed fallback imports; optional reward_latent_sd,
 latent_read_sd and mnar_curve (EnvConfig, all 0 by default; with reward_latent_sd > 0 the step also
 returns the shadow reading info['w']): with 0, the random draws and results are unchanged.
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Gymnasium environment for a 2D-state MDP with MNAR (censored) rewards.
 

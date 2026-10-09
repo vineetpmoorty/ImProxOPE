@@ -1,7 +1,6 @@
 '''
 Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/policies/behavior_policy.py.
 Changes from the original: import path; removed fallback import.
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Behavior policy π_b for the simulated MDP.
 

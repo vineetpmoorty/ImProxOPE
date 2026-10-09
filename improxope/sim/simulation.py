@@ -2,7 +2,6 @@
 Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file scripts/simulation.py.
 Changes from the original: import paths; compute_true_value_via_target_rollout passes extra EnvConfig
 fields (**env_kwargs, e.g. reward_latent_sd, mnar_curve) to the environment; removed fallback imports, including the unused np.random.RandomState fallback for NumpyRNG (module docstring added).
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 """
 import os
 import argparse

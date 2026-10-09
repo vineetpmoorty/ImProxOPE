@@ -4,7 +4,6 @@ Changes from the original: three fields added for the ImProxOPE experiments, all
 (ShadOPE's simulator): reward_latent_sd (reward component the next state does not reveal),
 latent_read_sd (noise of a recorded reading of that component, an extra shadow input) and
 mnar_curve (curved recording mechanism).
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Configuration objects for the simulation project.
 '''

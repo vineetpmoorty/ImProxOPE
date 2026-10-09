@@ -1,7 +1,6 @@
 '''
 Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/utils.py.
 Changes from the original: none.
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 General utilities for the simulation project.
 

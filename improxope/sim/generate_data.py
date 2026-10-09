@@ -2,7 +2,6 @@
 Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/generate_data.py.
 Changes from the original: import paths; removed fallback imports; episodes also return the shadow
 reading 'w' when the environment has reward_latent_sd > 0 (otherwise the output is unchanged).
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Generate offline trajectories for the MNARMDP under the behavior policy.
 

@@ -1,7 +1,6 @@
 # ImProxOPE
 
-Code for ImProxOPE, off-policy evaluation with rewards missing not at random. No data or results are
-included.
+Code for ImProxOPE, off-policy evaluation with rewards missing not at random.
 
 ## Setup
 

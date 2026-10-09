@@ -1,7 +1,6 @@
 """
 Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/train_dqn_sepsis.py.
 Changes from the original: none (file renamed).
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Train a Double DQN on the clean sepsis data to learn a target policy.
 

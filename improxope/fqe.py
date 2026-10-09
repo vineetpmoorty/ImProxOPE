@@ -3,7 +3,6 @@ Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadO
 Changes from the original: rkhs import path; removed fallback imports; optional shadow reading 'w'
 in the dataset: group_by_t adds 'W' = (S_{t+1}, w) (or S_{t+1} without 'w'), which the ProxFQE and
 WeightedFQE bridges use instead of S_{t+1}; Q-function targets keep S_{t+1}. Without 'w', unchanged.
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Fitted Q-Evaluation (FQE) for MNAR-reward MDPs using proximal bridges.
 

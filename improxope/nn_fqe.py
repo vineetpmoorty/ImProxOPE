@@ -6,7 +6,6 @@ Changes from the original: NNBridge import path; removed the sys.path insertion;
 Optional stochastic target: with 'pi_target' / 'pi_target_next' probability arrays in the data,
 values and FQE targets use sum_a pi(a|x) Q(x, a) and SCOPE's importance weight uses pi(a_t|x_t)
 instead of the deterministic DQN action (`_target_value`); without them, behaviour is unchanged.
-No license is published for ShadOPE; do not redistribute without the authors' permission.
 
 Neural-network-based FQE for the sepsis setting.
 
