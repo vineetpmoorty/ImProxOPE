@@ -1,25 +1,3 @@
-"""Clean the ShadOPE input to T=10, also keeping each stay's 11th state as the terminal proxy.
-
-Steps 1-4 follow ShadOPE's sepsis/clean_sepsis.py (https://github.com/NAIVlab/ShadOPE @ 4231ba5),
-so sepsis_T10.csv has ShadOPE's format and works with its downstream scripts:
-  1. keep stays with >= 11 rows, truncate to the first 11
-  2. reward_t = -(SOFA_{t+1} - SOFA_t) for t = 1..10
-  3. drop step 11 (no reward) -> T = 10
-  4. keep exactly the 48 state features plus icustayid, vaso_input, iv_input, reward
-
-Two additions:
-- Step renumbering. The extraction only writes rows for 4-hour windows with recorded data, so
-  some stays skip windows and their `bloc` labels have gaps (up to 19 within the first 11 rows).
-  ShadOPE's cleaning counts rows but keeps the original labels, while its evaluation groups rows
-  by `bloc` value and assumes t = 1..10, so labels with gaps break it. After truncation, `bloc`
-  is renumbered 1..11 within each stay: a step is the next recorded window (usually 4 h later,
-  sometimes longer). Rewards are unaffected; they were already computed row to row.
-- Terminal proxy. ShadOPE discards step 11, so at t = 10 its evaluation code falls back to S_10
-  as the "next state" and the final reward has no valid shadow variable. The 11th state of every
-  stay is written to sepsis_T10_terminal.csv (icustayid + the same 48 state columns, bloc = 11)
-  so that estimators can use S_11 as the t = 10 proxy. It is a separate file because ShadOPE's
-  scripts treat every column they do not explicitly drop as a state feature.
-"""
 import argparse
 import os
 

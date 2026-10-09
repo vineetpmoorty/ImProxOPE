@@ -1,27 +1,3 @@
-"""ShadOPE's synthetic benchmark: its kernel estimators and our corrected estimator, 1:1.
-
-Data, truth and the five ShadOPE methods follow ShadOPE's scripts/eval_grid.py (@ 4231ba5) exactly:
-`collect_episodes` with BehaviorPolicy(seed + 11), truth from 5000 target-policy rollouts, each
-method fitted on all n episodes and evaluated at the dataset's initial states with O_0 = 0, and the
-same hyperparameters (kernel-ridge lambda grid logspace(-7, 1, 30), 5-fold CV; RKHS bridge with
-delta_scale 5, delta_exp 0.4, 30 bandwidths, 5-fold CV).
-
-Ours (`CorrectedProxFQE`) is ShadOPE's ProxFQE with one change: the reward used in FQE is
-U = b + M h (R - b) instead of ProxFQE's M R + (1 - M) b (which is U with h = 1). The bridge b is
-ShadOPE's kernel bridge with the same settings, h is our recording inverse (improxope.learners), and
-both are cross-fitted over episodes (each fold scored by fits on the other folds, as in the MIMIC
-`oof` design); the Q-functions are ShadOPE's kernel ridge on all episodes. The h = 1 variant with
-the same cross-fitted bridge is reported as 'ours_bridge'.
-
-Simulator knobs (improxope.sim.configs.EnvConfig; all 0 = ShadOPE's simulator):
-- `beta` = reward_latent_sd: the reward gets a component beta * xi_t that the next state does not
-  reveal (recording still depends on the whole reward, so it stays missing not at random);
-- `tau` = latent_read_sd: the data contain a reading w_t = xi_t + tau * noise of that component,
-  added to the shadow variable (S_{t+1}, w_t) of every bridge; tau sets the shadow's strength, as
-  hiding SOFA components does on MIMIC (Q-functions keep S_{t+1});
-- `kappa` = mnar_curve: recording probability curved in the reward (our recording model's
-  logistic-linear form is then misspecified).
-"""
 from __future__ import annotations
 
 import time

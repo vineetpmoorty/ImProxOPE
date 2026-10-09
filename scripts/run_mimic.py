@@ -1,23 +1,3 @@
-"""MIMIC-III sepsis benchmark: our estimator and ShadOPE's baselines on identical data and splits.
-
-All (miss rate, seed) datasets run in one dependency-aware pool over the GPUs. Outputs go to the
-Hydra run directory (default runs/mimic/<timestamp>, git-ignored: the task cache holds
-patient-level predictions). Rerunning with the same `hydra.run.dir` resumes from the cache.
-
-    python scripts/run_mimic.py                                   # full: 4 rates x 3 seeds
-    python scripts/run_mimic.py miss_rates=[0.4] seeds=[42]       # one dataset
-    python scripts/run_mimic.py hydra.run.dir=runs/mimic/<old>    # resume
-    python scripts/run_mimic.py design.name=full use_ratios=false \
-        reuse_cache_from=runs/mimic/main                         # baselines from that run's cache
-    python scripts/run_mimic.py shadow=no_sofa_components ...     # weakened shadow (levels: improxope/data.py)
-    python scripts/run_mimic.py 'target_eps=[0,0.25,0.5,1]' use_ratios=true \
-        reuse_cache_from=runs/mimic/oof_5seeds 'reuse_cache_pattern=[bridge,recording]' ...   # epsilon-mixture targets
-
-`reuse_cache_from` (one run dir or a list) copies cached results matching `reuse_cache_pattern`,
-but only those valid for this run, judged from the source run's saved config (.hydra/config.yaml;
-see `reusable`): e.g. a weakened-shadow run reuses bridge and recording fits only from runs with the
-same shadow level, and from full-shadow runs only the baselines that never use the shadow variable.
-"""
 import glob
 import json
 import os

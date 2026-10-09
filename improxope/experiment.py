@@ -1,10 +1,3 @@
-"""Builds task graphs for one dataset and aggregates their results into method estimates.
-
-`targets` lists (tag, target) pairs, e.g. ('eps0.5', {'eps': 0.5, 'tau': 0.05}); the default
-[(None, None)] is the dataset's own target. Bridge and recording tasks do not depend on the target
-and are keyed under the dataset prefix (shared, and reusable from earlier runs); ratio, Q and
-baseline tasks are keyed under `{prefix}/{tag}`.
-"""
 from __future__ import annotations
 
 from typing import Dict, List, Optional, Sequence, Tuple

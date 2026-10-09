@@ -1,15 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/utils.py.
-Changes from the original: none.
-
-General utilities for the simulation project.
-
-It provides:
-  - `sigmoid`: a numerically-stable logistic function.
-  - `to_signed_action`: robust mapping from {0,1} or {-1,+1} encodings to {-1,+1}.
-  - `NumpyRNG`: a thin RNG wrapper with a convenient `bernoulli(p)` method.
-
-'''
+"""Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/utils.py."""
 
 from __future__ import annotations
 

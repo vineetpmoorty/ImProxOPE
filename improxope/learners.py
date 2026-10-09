@@ -1,20 +1,3 @@
-"""Learners for the corrected estimator that ShadOPE does not provide.
-
-Both nuisances are fitted by whitened generalized method of moments (GMM) with fixed, finite
-feature maps, as in the paper's fixed-feature instance: minimize ||S^{-1/2} m(theta)||^2, where
-m(theta) is the empirical moment vector against fixed instruments g and S = mean(g g^T). Neural
-min-max learners were tried first; with a few hundred rows per fit, the adversary memorizes which
-rows are recorded and the game degenerates (for the recording model, to h = 1), so they are not
-used.
-
-- RecordingInverse: h(r, x, a) = 1 / e(r, x, a) with logistic e, i.e. h = 1 + exp(-theta' phi(r, x, a)),
-  capped at `cap`, solving E[g(z, x, a) (M h(R, x, a) - 1)] = 0 on all rows. With shadow
-  exclusion the true inverse solves these moments.
-- RatioModel: marginal ratio w_t(x, a) = rho_t(x) * pi_t(a|x) / mu(a|x). The logging policy mu(a|s)
-  is ShadOPE's softmax network; the state ratio rho_t (rho_1 = 1, shared initial law) is
-  log-linear in x and solves the balance equations
-  E[g(X_t) rho_t(X_t)] = E[g(X_t) rho_{t-1}(X_{t-1}) pi_{t-1}(A_{t-1}|X_{t-1}) / mu(A_{t-1}|S_{t-1})].
-"""
 from __future__ import annotations
 
 from typing import Dict, List, Optional

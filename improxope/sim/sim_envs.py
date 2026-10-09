@@ -1,38 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/envs/sim_envs.py.
-Changes from the original: import paths; removed fallback imports; optional reward_latent_sd,
-latent_read_sd and mnar_curve (EnvConfig, all 0 by default; with reward_latent_sd > 0 the step also
-returns the shadow reading info['w']): with 0, the random draws and results are unchanged.
-
-Gymnasium environment for a 2D-state MDP with MNAR (censored) rewards.
-
-Observation
------------
-
-obs[t] = [s1_t, s2_t, o_{t-1}], where o_{t-1} ∈ {0,1} is the previous
-missingness indicator. This implements the "extended MDP" idea so that
-target policies π(a | s, o_prev) can consume o_prev directly.
-
-Action space
-------------
-gymnasium.spaces.Discrete(2), with index-to-signed mapping: 0 ↦ -1, 1 ↦ +1.
-For convenience, the environment also accepts raw actions in {-1, +1}.
-
-Reward
-------
-The Gym reward is the observed reward r_obs = O_t * R_t. The true uncensored
-reward R_t is placed in info["r_true"].
-
-Notes
------
-Transition:
-    S_{t+1} = diag(0.9, 0.9) * S_t + 0.2 * A_t + ε_s,   ε_s ~ N(0, σ_s^2 I_2).
-Reward:
-    R_t = expit( (0.9 - 0.6 A_t, -0.7)^T S_t + (1.3, 2)^T S_{t+1} - 0.4 A_t ) + U_t,
-        U_t ~ Uniform[-0.1, 0.1].
-MNAR mechanism:
-    O_t ~ Bernoulli( sigmoid( 1 - 0.1 A_t + 0.2 * [1,-2]^T S_t + 2.5 R_t ) ).
-'''
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/envs/sim_envs.py."""
 
 from __future__ import annotations
 

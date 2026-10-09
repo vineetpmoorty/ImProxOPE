@@ -1,29 +1,4 @@
-"""
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/nn_fqe.py.
-Changes from the original: NNBridge import path; removed the sys.path insertion; optional
-'shadow' data key (a reduced shadow variable) used by the ProxFQE and IPW-FQE bridges instead of
-'next_states' (Q-function targets still use 'next_states'); without it, behaviour is unchanged.
-Optional stochastic target: with 'pi_target' / 'pi_target_next' probability arrays in the data,
-values and FQE targets use sum_a pi(a|x) Q(x, a) and SCOPE's importance weight uses pi(a_t|x_t)
-instead of the deterministic DQN action (`_target_value`); without them, behaviour is unchanged.
-
-Neural-network-based FQE for the sepsis setting.
-
-Supports:
-  - High-dimensional state (48 dims, paper's features)
-  - 25 discrete actions (5 vaso x 5 iv)
-  - NN bridge for reward imputation (ProxFQE)
-  - NN Q-function for Bellman regression
-
-Classes:
-  - NNQFunction:   neural net Q(s,a) -> R for all 25 actions
-  - NNProxFQE:     our method — NN bridge to impute MNAR rewards, then FQE
-  - NNNaiveFQE:    baseline — drops missing rewards, FQE on observed only
-  - NNOracleFQE:   oracle — uses r_true (ground truth)
-  - NNImputeFQE:   baseline — NN regression imputation (biased under MNAR)
-  - NNIPWFQE:      baseline — inverse propensity weighted FQE
-  - NNSCOPE:       baseline — reward shaping + per-step IS (Parbhoo et al. 2020)
-"""
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/nn_fqe.py."""
 
 import numpy as np
 import torch

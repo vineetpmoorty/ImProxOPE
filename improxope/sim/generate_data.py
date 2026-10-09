@@ -1,27 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/generate_data.py.
-Changes from the original: import paths; removed fallback imports; episodes also return the shadow
-reading 'w' when the environment has reward_latent_sd > 0 (otherwise the output is unchanged).
-
-Generate offline trajectories for the MNARMDP under the behavior policy.
-
-Output schema (one row per time step):
-    s1, s2, o_prev, a, o_t, r_obs, r_true, s1_next, s2_next, o_t_next, ep, t
-
-Usage (from repo root):
-
-    # BOTH (default): save .npz (canonical) and .csv (for humans)
-    python -m src.generate_data --episodes 500 --seed 123 \
-        --out data/simulated/mnar_dataset
-
-    # NPZ only (compressed NumPy archive)
-    python -m src.generate_data --episodes 500 --seed 123 \
-        --out data/simulated/mnar_dataset.npz --format npz
-
-    # CSV only (human-readable; requires pandas)
-    python -m src.generate_data --episodes 500 --seed 123 \
-        --out data/simulated/mnar_dataset.csv --format csv
-'''
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/generate_data.py."""
 
 from __future__ import annotations
 

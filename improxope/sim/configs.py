@@ -1,12 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/configs.py.
-Changes from the original: three fields added for the ImProxOPE experiments, all defaulting to 0
-(ShadOPE's simulator): reward_latent_sd (reward component the next state does not reveal),
-latent_read_sd (noise of a recorded reading of that component, an extra shadow input) and
-mnar_curve (curved recording mechanism).
-
-Configuration objects for the simulation project.
-'''
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/configs.py."""
 
 from __future__ import annotations
 

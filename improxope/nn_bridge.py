@@ -1,28 +1,4 @@
-"""
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/OPE/nn_bridge.py.
-Changes from the original: none.
-
-Neural network bridge estimator via Adversarial GMM (AGMM).
-
-Replaces the RKHS minimax bridge with neural networks, following:
-  Dikkala et al. (2020) "Minimax Estimation of Conditional Moment Models"
-  Section 6: Neural Networks / AGMM.
-
-The conditional moment restriction for the bridge function:
-  E[R_t - b(S_{t+1}, S_t, A_t) | R_t, S_t, A_t] = 0
-
-is solved via the minimax objective:
-  min_theta max_w  (1/n) sum_i [R_i - h_theta(X_i)] f_w(Z_i)
-                   - lambda * ||f_w||^2_F
-                   + mu * ||h_theta||^2_H
-
-where:
-  X = (S_{t+1}, S_t, A_t)  -- hypothesis input (what bridge depends on)
-  Z = (R_t, S_t, A_t)      -- instrument/condition input
-  y = R_t                   -- outcome
-
-Interface matches RKHSIV: .fit(X, y, condition) and .predict(X).
-"""
+"""Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/OPE/nn_bridge.py."""
 
 import numpy as np
 import torch

@@ -1,20 +1,3 @@
-"""ShadOPE's synthetic benchmark: its five kernel estimators and ours on identical simulated datasets.
-
-One task per (cell, n, missingness target, seed, method), plus one truth task per (cell,
-missingness target, seed) (5000 target-policy rollouts, as in ShadOPE's eval_grid.py). Outputs go
-to the Hydra run directory (default runs/sim_grid/<timestamp>); rerunning with the same
-hydra.run.dir resumes from the cache, and caches of runs over different seeds can be merged.
-
-    python scripts/run_sim_grid.py                                           # ShadOPE's grid, 50 seeds
-    python scripts/run_sim_grid.py "seeds=[321,322]" "ns=[128]" n_workers=8   # small run
-    python scripts/run_sim_grid.py "cells=[0.4:0.5:0]" "ns=[2048]"           # other simulator cells (beta:tau:kappa)
-    python scripts/run_sim_grid.py "methods=[ours]" \
-        shadope_published=results/shadope_published/ope_runs_size_x_missrate.csv   # ShadOPE's own numbers
-
-With `shadope_published`, ShadOPE's released per-seed values for its simulator (cell 0:0:0) are added
-as '<method>_published' rows, scored against the same truth tasks; methods rerun here keep their
-plain names (e.g. a spot check of 'prox' next to 'prox_published').
-"""
 import json
 import os
 import pickle

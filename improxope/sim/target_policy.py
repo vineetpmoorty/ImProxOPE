@@ -1,20 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/policies/target_policy.py.
-Changes from the original: import path; removed fallback import.
-
-Target policy π for the simulated MDP.
-
-Form
-----
-P(A_t = +1 | S_t = s, O_{t-1} = o_prev)
-  = sigmoid(3([1.0, 0.3]^T s  + 0.5 - 0.8 * (2 o_prev - 1))),
-where s ∈ R^2, o_prev ∈ {0,1}, and A_t ∈ {-1, +1}.
-
-Notes
------
-- The env observation is (s1, s2, o_prev). This policy consumes both s and o_prev.
-- We provide helpers that take either (s, o_prev) or the raw obs vector.
-'''
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/policies/target_policy.py."""
 
 from __future__ import annotations
 import torch

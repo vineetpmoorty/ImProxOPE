@@ -1,18 +1,3 @@
-"""Calibrate the simulator cells (beta:tau:kappa, see improxope/sim_ope.py) for the synthetic shadow
-ladder and the 2x2 misspecification cells.
-
-1. Shadow strength: with the hidden reward component fixed (beta), held-out R^2 of the true reward
-   from (shadow = (S_{t+1}, w), S_t, A_t) for a grid of reading noise tau (boosting, as for MIMIC in
-   scripts/shadow_strength.py), next to the R^2 from (S_t, A_t) alone. Ladder: tau = 0 (the shadow
-   reveals the component) and the tau giving each target R^2 (interpolated, then re-measured).
-2. 2x2 cells: the curved recording mechanism (kappa) at tau = 0 (bridge right, recording model
-   wrong) and at the middle ladder level (both wrong).
-3. Missingness: for every cell and target, the intercept c0 giving that missing rate (bisection on a
-   simulated dataset; the missing rate decreases in c0). ShadOPE's cell 0:0:0 keeps its intercepts.
-Writes results/sim_levels.csv (aggregate only), read by scripts/run_sim_grid.py.
-
-    python scripts/calibrate_sim.py
-"""
 import argparse
 import os
 

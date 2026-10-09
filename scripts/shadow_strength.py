@@ -1,13 +1,3 @@
-"""How informative is the shadow variable about the reward, at each strength level?
-
-Held-out R^2 of predicting the true reward R_t from (shadow_t, S_t, A_t), with a linear model and
-gradient boosting, fitted on ShadOPE's 60% fit stays and scored on the 40% test stays (rows pooled
-over t). The row "none" uses (S_t, A_t) only: the gap to it is what the shadow variable adds.
-Uses true rewards for every row; a diagnostic of the data, not an input to any estimator. Writes
-an aggregate table to results/shadow_strength.csv.
-
-    python scripts/shadow_strength.py
-"""
 import os
 
 import numpy as np

@@ -1,19 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/policies/behavior_policy.py.
-Changes from the original: import path; removed fallback import.
-
-Behavior policy π_b for the simulated MDP.
-
-Form
-----
-P(A_t = +1 | S_t = s) = sigmoid( 0.3 + [0.8, -0.3]^T s ),
-where s ∈ R^2 and A_t ∈ {-1, +1}.
-
-Notes
------
-- This module provides both probability evaluation and action sampling.
-- Use `sample` for stochastic action during data generation.
-'''
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/policies/behavior_policy.py."""
 
 from __future__ import annotations
 

@@ -1,11 +1,3 @@
-"""Patient-by-time arrays shared by every estimator in this package.
-
-A Panel holds N trajectories of a fixed horizon T. The decision state is X_t = (S_t, O_{t-1});
-Z_t = S_{t+1} is the next state (at t = T the terminal state). The shadow variable for R_t is Z_t,
-or W_t when set: a reduced proxy (some columns of Z_t) used only by the bridge and the recording
-model, while Q-function targets still use the full next state Z_t. Target-policy probabilities are stored for X_t and X_{t+1} so that deterministic and
-stochastic targets are handled the same way.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass, fields, replace

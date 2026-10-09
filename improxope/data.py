@@ -1,18 +1,3 @@
-"""Data loading for the MIMIC-III sepsis benchmark and ShadOPE's synthetic environment.
-
-MIMIC files come from scripts/data/ (masked datasets from apply_mnar.py, terminal states from
-clean_sepsis.py). Two views of the same rows are built:
-- `shadope_dict`: the dictionary format of ShadOPE's sepsis/eval_ope.py, used by the baselines.
-- `mimic_panel`: a `Panel` for our estimator.
-With `terminal_fix=True` (the agreed protocol), the next state at t = T is the stay's terminal
-state S_{T+1} instead of ShadOPE's fallback S_T, in both views.
-
-`target` replaces ShadOPE's DQN target with an epsilon-mixture policy (see `target_policy`).
-
-`shadow` weakens the shadow variable (the bridge's proxy for a missing reward) by dropping next-state
-columns, in both views; Q-function targets keep the full next state. The reward is
-SOFA_t - SOFA_{t+1}, so with SOFA in the next state the bridge can recover it by subtraction.
-"""
 from __future__ import annotations
 
 import os

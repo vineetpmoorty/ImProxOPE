@@ -1,16 +1,3 @@
-"""Clinician-policy clone and DQN Q-values per row, for the epsilon-mixture target policies.
-
-The clone is ShadOPE's softmax behaviour network (`_NNSoftmaxPolicy`, the model its SCOPE baseline
-uses), trained once on all stays like the DQN target. With ShadOPE's sepsis settings (512-512-256,
-8000 steps) it memorizes the training stays (held-out log-loss far above the marginal-frequency
-baseline), so the network size and number of steps are chosen by held-out log-loss on 20% of stays;
-the saved clone is then refitted on all stays with the chosen settings. The DQN's
-Q-values (mimic_processed/dqn_sepsis.pt) are evaluated on every row as well, so target policies
-can be built without the networks. Output (mimic_processed/clinician_policy.npz):
-icustayid, bloc, clin (N, 25) clone probabilities, q_dqn (N, 25) DQN Q-values.
-
-    python scripts/data/train_clinician_policy.py --device cuda
-"""
 import argparse
 import os
 

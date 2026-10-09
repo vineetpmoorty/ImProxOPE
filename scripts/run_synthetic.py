@@ -1,12 +1,3 @@
-"""Validation on ShadOPE's synthetic MNAR environment, where the true policy value is known.
-
-For each (mnar_c0, seed): generate logged data with ShadOPE's behaviour policy, compute the true
-value of its target policy by on-policy rollout, and run our estimator (plus the cross-fitted
-bridge variants) with the same pipeline as MIMIC. Outputs go to runs/sim/<timestamp>.
-
-    python scripts/run_synthetic.py
-    python scripts/run_synthetic.py mnar_c0s=[1.0,-0.5] seeds=[0] n_episodes=4000
-"""
 import json
 import os
 import sys

@@ -1,9 +1,3 @@
-"""Hydra structured configs (Python dataclasses; no YAML files).
-
-Network sizes and training lengths default to ShadOPE's sepsis settings (run_realdata.sh), so
-our learners and ShadOPE's baselines are trained the same way. Override from the command line,
-e.g. `python scripts/run_mimic.py seeds=[42] miss_rates=[0.4] n_workers=8`.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

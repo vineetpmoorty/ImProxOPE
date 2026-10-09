@@ -1,16 +1,4 @@
-"""
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/train_dqn_sepsis.py.
-Changes from the original: none (file renamed).
-
-Train a Double DQN on the clean sepsis data to learn a target policy.
-
-State: 48 original clinical features (no O_{t-1})
-Action: 25 discrete (vaso_input * 5 + iv_input)
-Reward: reward (-diff SOFA, fully observed)
-
-After training, applies the learned greedy policy to all data and saves
-vaso_target / iv_target columns for downstream use.
-"""
+"""Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/train_dqn_sepsis.py."""
 
 import argparse
 import numpy as np

@@ -1,19 +1,4 @@
-'''
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/OPE/fqe.py.
-Changes from the original: rkhs import path; removed fallback imports; optional shadow reading 'w'
-in the dataset: group_by_t adds 'W' = (S_{t+1}, w) (or S_{t+1} without 'w'), which the ProxFQE and
-WeightedFQE bridges use instead of S_{t+1}; Q-function targets keep S_{t+1}. Without 'w', unchanged.
-
-Fitted Q-Evaluation (FQE) for MNAR-reward MDPs using proximal bridges.
-
-This module provides:
-  - A RKHS-based minimax bridge estimator q_t(w,s,a) with the *existing* RKHS
-    classes in `rkhs.py` (RKHSIVCV / ApproxRKHSIVCV). It respects the median
-    heuristic for bandwidths.
-  - FQE algorithm that work directly with the repo's data format produced by 
-    `src/generate_data.py`.
-  - A lightweight Kernel Ridge regressor (with CV over λ) to fit Q_t(s,a).
-'''
+"""Adapted from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/OPE/fqe.py."""
 
 from __future__ import annotations
 

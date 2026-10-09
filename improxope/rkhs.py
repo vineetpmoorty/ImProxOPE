@@ -1,7 +1,4 @@
-"""
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/OPE/rkhs.py.
-Changes from the original: none (module docstring added).
-"""
+"""Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file src/OPE/rkhs.py."""
 import warnings
 import torch
 import torch.linalg

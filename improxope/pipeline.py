@@ -1,31 +1,3 @@
-"""Task functions for the corrected estimator and the ShadOPE baselines.
-
-Every task takes a `source` dict identifying one dataset (MIMIC: miss rate, seed; synthetic: an
-.npz file) and loads it through a per-process cache, so only small arguments and prediction
-arrays cross process boundaries.
-
-The fit stays (ShadOPE's 60% split) are used according to a cross-fitting design:
-- a design is a list of chains; each chain fits Q (and the ratios) on its `q_rows` and produces
-  per-test-stay evaluation terms; chains are averaged;
-- a chain's corrected scores on `q_rows` come from units; each unit fits the bridge on
-  `bridge_rows` and the recording model on `recording_rows`, and scores `score_rows` (the unit
-  score rows partition `q_rows`). Test-stay scores are averaged over a chain's units.
-
-Designs (`design['name']`, with `n_folds` folds of the fit stays):
-- rotate: chain r: Q on fold r+2; bridge on fold r; recording on fold r+1 (fold r if not separate)
-- full:   one chain; bridge, recording and Q all on every fit stay (ShadOPE's data use)
-- oof:    one chain; Q on every fit stay; unit k scores fold k with bridge and recording fitted on
-          the other folds (separate: bridge on fold k+1, recording on fold k+2)
-
-Target policies: `target=None` is the dataset's own (ShadOPE's DQN) target. Otherwise `target`
-(e.g. {'eps': 0.5, 'tau': 0.05}, see improxope.data.target_policy) replaces the target probabilities
-for the tasks that depend on the target (ratios, Q-function, baselines); the bridge and recording
-model do not, so their fits are shared across targets.
-
-Evaluation on the held-out test stays:
-  psi_i = V_1(X_i1) + sum_t w_t(X_it, A_it) * (U_it + V_{t+1}(X_i,t+1) - Q_t(X_it, A_it)),
-  U = b + M h (R - b);  "corrected FQE" reports V_1 alone (no ratio layer).
-"""
 from __future__ import annotations
 
 import time

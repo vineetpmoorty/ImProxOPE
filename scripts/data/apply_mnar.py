@@ -1,17 +1,4 @@
-"""
-Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/apply_mnar.py.
-Changes from the original: none.
-
-Apply MNAR missingness to the cleaned sepsis data with DQN target actions.
-
-Pipeline:
-    1. Load sepsis_T10_with_targets.csv (clean data + DQN target actions)
-    2. Apply MNAR mechanism to rewards -> O_t, r_obs
-    3. Compute O_{t-1} (shifted, first step = 1)
-    4. Create conservative target policy: where O_{t-1}=0,
-       reduce vaso_target and iv_target by 1 (clipped at 0)
-    5. Save OPE data for each missing rate
-"""
+"""Copied from ShadOPE (Wei, Qu, Miao, ICML 2026), https://github.com/NAIVlab/ShadOPE @ 4231ba5, file sepsis/apply_mnar.py."""
 
 import argparse
 import numpy as np

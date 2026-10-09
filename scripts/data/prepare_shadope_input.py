@@ -1,15 +1,3 @@
-"""Build ShadOPE's expected input (sepsis_processed_state_action.csv) from MIMICtable.csv.
-
-MIMICtable.csv is the raw-unit intermediate table written by sepsis_cohort.py
---save_intermediate in https://github.com/microsoft/mimic_sepsis (commit fce1d05, with
-the fixes listed in README.md applied). ShadOPE's sepsis/clean_sepsis.py expects that
-table plus two discrete action columns, vaso_input and iv_input (levels 0-4 each).
-ShadOPE's binning code is not public, so this reproduces the Komorowski/Raghu rule as
-implemented in that repository's sepsis_cohort.py lines 1640-1654: level 0 = no drug in
-the 4h window, levels 1-4 = quartiles of the nonzero doses over the whole table
-(input_4hourly for IV fluid, max_dose_vaso for vasopressors). ShadOPE's joint action is
-vaso_input * 5 + iv_input.
-"""
 import argparse
 import os
 

@@ -1,13 +1,3 @@
-"""Shadow strength when SOFA and some of its organ systems are removed from the shadow variable.
-
-SOFA is the sum of six organ-system subscores; each subset of systems to hide (plus the SOFA total)
-gives a candidate shadow level. For every subset, the held-out R^2 of the true reward from
-(shadow_t, S_t, A_t) is computed as in scripts/shadow_strength.py, to choose intermediate levels
-between 'no_sofa' (no system hidden) and 'no_sofa_components' (all six hidden). Writes an
-aggregate table to results/shadow_organs.csv.
-
-    OMP_NUM_THREADS=8 python scripts/shadow_organs.py
-"""
 import itertools
 import os
 

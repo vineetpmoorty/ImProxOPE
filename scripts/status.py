@@ -1,9 +1,3 @@
-"""Print progress and ETA of running (or finished) runs from their status.json files.
-
-    python scripts/status.py                         # every run under runs/
-    python scripts/status.py runs/mimic/rerun_full   # specific run directories
-    watch -n 60 python scripts/status.py             # refresh every minute
-"""
 import datetime as dt
 import glob
 import json

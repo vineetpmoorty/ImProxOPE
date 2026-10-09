@@ -1,16 +1,3 @@
-"""Dependency-aware process pool spread over GPUs, with per-task result caching and status/ETA.
-
-Each worker is a separate process pinned to one GPU (round-robin) and limited to one CPU thread,
-so many small trainings run side by side. `cpu_workers` adds CPU-only workers (device 'cpu') to
-the same pool; every task must then accept device='cpu'. A task runs once its dependencies have finished; its
-result is pickled under `cache_dir`, so rerunning with the same cache skips finished tasks.
-Priority (larger cost first) orders the ready queue, so long tasks start early.
-
-After every finished task, `status.json` (next to `cache_dir`) records progress and an ETA. The
-ETA uses the observed mean wall time per task kind (e.g. 'bridge'), falling back to the `cost`
-estimates for kinds not yet seen: remaining work / workers, but never less than the longest
-remaining single task. `scripts/status.py` prints it.
-"""
 from __future__ import annotations
 
 import datetime as dt
